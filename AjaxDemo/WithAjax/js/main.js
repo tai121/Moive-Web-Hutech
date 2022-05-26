@@ -24,9 +24,9 @@ function clickHandler() {
 //**submit get data save it into txt file then show them in page but add load fuction */
 // ------------------------------------------------------------
 function clickHandlerButLoad() {
-    var resultNotAjax = document.getElementById('resultNotAjax');
     // var txt = document.createTextNode("Hello World!!!");
     // resultNotAjax.appendChild(txt);
+    var resultNotAjax = document.getElementById('resultNotAjax');
     resultNotAjax.innerHTML = "Hello World";
     resultNotAjax.style.color = "red";
     setTimeout(() => {
@@ -52,7 +52,7 @@ function displayCD(i) {
             myFunction(this, i);
         }
     };
-    xmlhttp.open("GET", "cd_catalog.xml", true);
+    xmlhttp.open("GET", "Server/cd_catalog.xml", true);
     xmlhttp.send();
 }
 
@@ -89,7 +89,7 @@ function loadXMLDoc() {
             myFunctionLoad(this);
         }
     };
-    xmlhttp.open("GET", "cd_catalog.xml", true);
+    xmlhttp.open("GET", "Server/cd_catalog.xml", true);
     xmlhttp.send();
 }
 function myFunctionLoad(xml) {
