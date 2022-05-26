@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+        
+        <!--  -->
+        <div id='showCD'></div><br>
+        <input type="button" onclick="previous()" value="<<">
+        <input type="button" onclick="next()" value=">>">
+        <script src="js/main.js"></script>
+        <!--  -->
+        <table id="demo"></table>
+        <button type="button" onclick="loadXMLDoc()">Get my CD collection</button>
+        <br><br>
+        <script src="js/main.js">
+            loadXMLDoc();
+        </script>
+    </body>
+</html>
