@@ -1,11 +1,7 @@
 ﻿use master 
 
-drop database movieWebnew
-
-
-
-create database movieWebnew
-use movieWebnew
+create database MovieWeb
+use MovieWeb
 
 
 CREATE TABLE NguoiDung
@@ -17,7 +13,7 @@ CREATE TABLE NguoiDung
     SDT         CHAR    (10)          ,
     TaiKhoan    VARCHAR (20)          ,
     MatKhau     VARCHAR (30)          ,
-        PRIMARY KEY (MaNguoiDung)
+    PRIMARY KEY (MaNguoiDung)
 
 )
 go
@@ -30,7 +26,7 @@ CREATE TABLE DatNuoc
     MaNuoc        CHAR    (5 ) NOT NULL ,
     TenNuoc       NVARCHAR(20)          ,
     MoTaVeDatNuoc NVARCHAR(50)          ,
-        PRIMARY KEY (MaNuoc)
+    PRIMARY KEY (MaNuoc)
 
 )
 go
@@ -43,7 +39,7 @@ CREATE TABLE NgonNgu
     MaNgonNgu CHAR(5) NOT NULL ,
     TenNgonNgu NVARCHAR(10) ,
     MoTaVeNgonNgu NVARCHAR(20),
-        PRIMARY KEY (MaNgonNgu),
+    PRIMARY KEY (MaNgonNgu),
 
 )
 
@@ -80,7 +76,7 @@ CREATE TABLE TheLoai
     MaTheLoai     CHAR    (5 ) NOT NULL ,
     TenTheLoai    NVARCHAR(19)          ,
     MoTaVeTheLoai NVARCHAR(50)          ,
-        PRIMARY KEY (MaTheLoai)
+    PRIMARY KEY (MaTheLoai)
 
 )
 go
@@ -92,7 +88,7 @@ CREATE TABLE TheLoaiCuaPhim
 (
     MaTheLoai CHAR(5) NOT NULL ,
     MaPhim    CHAR(5) NOT NULL ,
-        PRIMARY KEY (MaTheLoai,MaPhim),
+    PRIMARY KEY (MaTheLoai,MaPhim),
     FOREIGN KEY (MaTheLoai) REFERENCES TheLoai (MaTheLoai),
     FOREIGN KEY (MaPhim) REFERENCES Phim (MaPhim)
 
@@ -108,7 +104,7 @@ CREATE TABLE DienVien
     TenDienVien     NVARCHAR (35 )          ,
     HinhAnhDienVien VARCHAR  (50 )          ,
     MoTaVeDienVien  VARCHAR  (50 )          ,
-        PRIMARY KEY (MaDienVien)
+    PRIMARY KEY (MaDienVien)
 
 )
 go
@@ -121,7 +117,7 @@ CREATE TABLE DienVienDongPhim
     MaPhim     CHAR    (5 ) NOT NULL ,
     MaDienVien CHAR    (5 ) NOT NULL ,
     TenVaiDien NVARCHAR(15)          ,
-        PRIMARY KEY (MaPhim,MaDienVien),
+    PRIMARY KEY (MaPhim,MaDienVien),
     FOREIGN KEY (MaPhim) REFERENCES Phim (MaPhim),
     FOREIGN KEY (MaDienVien) REFERENCES DienVien (MaDienVien)
 
@@ -134,10 +130,9 @@ go
 CREATE TABLE TheThanhVien
 (
     MaTheThanhVien CHAR(5) NOT NULL ,
-    NgayBatDau     DATE             ,
-    NgayKetThuc    DATE             ,
+    NgayBatDauTheThanhVien     DATE ,
     MaNguoiDung    CHAR(5) NOT NULL ,
-        PRIMARY KEY (MaTheThanhVien,MaNguoiDung),
+    PRIMARY KEY (MaTheThanhVien,MaNguoiDung),
     FOREIGN KEY (MaNguoiDung) REFERENCES NguoiDung (MaNguoiDung)
 
 )
@@ -153,7 +148,7 @@ CREATE TABLE Admin
     MatKhauAdmin  VARCHAR  (30)         ,
     tenAdmin      NVARCHAR(35)          ,
     NgayKhoiTao   DATE                  ,
-        PRIMARY KEY (MaAdmin)
+    PRIMARY KEY (MaAdmin)
 
 )
 go
@@ -167,7 +162,7 @@ CREATE TABLE DanhGiaCuaPhim
 (
     MaPhim          CHAR(5) NOT NULL ,
     ThoiGianDanhGia DATE             ,
-        PRIMARY KEY (MaPhim),
+    PRIMARY KEY (MaPhim),
     FOREIGN KEY (MaPhim) REFERENCES Phim (MaPhim)
 )
 go
@@ -180,7 +175,7 @@ CREATE TABLE Tag
     MaTag        CHAR    (5 ) NOT NULL ,
     TenTag       NVARCHAR(15)          ,
     NoiDungVeTag VARCHAR (50)          ,
-        PRIMARY KEY (MaTag)
+    PRIMARY KEY (MaTag)
 
 )
 go
@@ -192,7 +187,7 @@ CREATE TABLE TagCuaPhim
 (
     MaPhim CHAR(5) NOT NULL ,
     MaTag  CHAR(5) NOT NULL ,
-        PRIMARY KEY (MaPhim,MaTag),
+    PRIMARY KEY (MaPhim,MaTag),
     FOREIGN KEY (MaPhim) REFERENCES Phim (MaPhim),
     FOREIGN KEY (MaTag) REFERENCES Tag (MaTag)
 
@@ -210,7 +205,7 @@ CREATE TABLE DaoDien
     TenDaoDien     NVARCHAR(35)          ,
     HinhAnhDaoDien VARCHAR (50)          ,
     MoTaVeDaoDien  VARCHAR (50)          ,
-        PRIMARY KEY (MaDaoDien)
+    PRIMARY KEY (MaDaoDien)
 
 )
 go
@@ -223,7 +218,7 @@ CREATE TABLE DaoDienCuaPhim
     MaPhim    CHAR    (5 ) NOT NULL ,
     MaDaoDien CHAR    (5 ) NOT NULL ,
     VaiTro    NVARCHAR(10)          ,
-        PRIMARY KEY (MaPhim,MaDaoDien),
+    PRIMARY KEY (MaPhim,MaDaoDien),
     FOREIGN KEY (MaPhim) REFERENCES Phim (MaPhim),
     FOREIGN KEY (MaDaoDien) REFERENCES DaoDien (MaDaoDien)
 
@@ -240,7 +235,7 @@ CREATE TABLE DanhGiaPhim
     SoSao            BIT                  ,
     ThoiGianBinhLuan DATE                 ,
     NoiDungBinhLuan  NVARCHAR(50)         ,
-        PRIMARY KEY (MaPhim,MaNguoiDung),
+    PRIMARY KEY (MaPhim,MaNguoiDung),
     FOREIGN KEY (MaPhim) REFERENCES Phim (MaPhim),
     FOREIGN KEY (MaNguoiDung) REFERENCES NguoiDung (MaNguoiDung)
 
@@ -254,7 +249,7 @@ CREATE TABLE PhuongThucThanhToan
 (
     MaPhuongThucTT  CHAR    (5 ) NOT NULL ,
     TenPhuongThucTT NVARCHAR(20)          ,
-        PRIMARY KEY (MaPhuongThucTT)
+    PRIMARY KEY (MaPhuongThucTT)
 )
 go
 
@@ -269,7 +264,7 @@ CREATE TABLE ChiTietPhuongThucTT
     SoHuu          VARCHAR(35)         ,
     MaXacThuc      CHAR   (8)          ,
     NgayHetHan     DATE                ,
-        PRIMARY KEY (MaNguoiDung,MaPhuongThucTT),
+    PRIMARY KEY (MaNguoiDung,MaPhuongThucTT),
     FOREIGN KEY (MaNguoiDung) REFERENCES NguoiDung (MaNguoiDung),
     FOREIGN KEY (MaPhuongThucTT) REFERENCES PhuongThucThanhToan (MaPhuongThucTT)
 )
